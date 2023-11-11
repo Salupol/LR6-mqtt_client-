@@ -1,8 +1,7 @@
 import paho.mqtt.client as mqtt
 import pygame
 import json
-import getpass
-from datetime import datetime  # Import the datetime module
+from datetime import datetime
 
 
 class MQTTClient:
@@ -42,8 +41,8 @@ class MQTTClient:
 
     def on_connect(self, client, userdata, flags, rc):
         if rc == 0:
-            self.write_to_log("Connected successfully")
-            self.display_info("Connected successfully")
+            self.write_to_log("Connected successfully, waiting for messages")
+            self.display_info("Connected successfully, waiting for messages")
             self.client.subscribe("tele/main_battery/SENSOR")
         else:
             error_message = f"Connection failed with result code {rc}"
@@ -61,6 +60,7 @@ class MQTTClient:
     def display_temperature(self, voltage):
         # Set up fonts
         font = pygame.font.Font(None, 36)
+        screen.fill((0, 0, 0))
 
         # Draw the text on the screen
         text = font.render(f'Voltage: {voltage}', True, (255, 255, 255))
