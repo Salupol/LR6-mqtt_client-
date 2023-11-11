@@ -66,3 +66,45 @@ Received voltage: 56.68
 [2023-11-11 14:59:33] Received voltage: 56.69
 [2023-11-11 14:59:43] Received voltage: 56.69
 [2023-11-11 15:00:23] Received voltage: 56.68
+[2023-11-11 15:03:50] Connected successfully, waiting for messages
+[2023-11-11 15:04:00] Failed to connect to MQTT server
+[2023-11-11 15:06:06] Failed to connect to MQTT server
+[2023-11-11 15:06:15] Connected successfully, waiting for messages
+[2023-11-11 15:06:18] Received voltage: 56.69
+[2023-11-11 15:14:19] Connected successfully, waiting for messages
+[2023-11-11 15:14:55] Connected successfully, waiting for messages
+[2023-11-11 15:15:12] Connected successfully, waiting for messages
+[2023-11-11 15:15:36] Connected successfully, waiting for messages
+[2023-11-11 15:16:13] Received voltage: 56.68
+[2023-11-11 15:16:28] Received voltage: 56.68
+[2023-11-11 15:16:33] Received voltage: 56.68
+[2023-11-11 15:16:45] Connected successfully, waiting for messages
+[2023-11-11 15:16:51] Received voltage: 56.69
+[2023-11-11 15:17:13] Received voltage: 56.68
+[2023-11-11 15:17:23] Received voltage: 56.69
+[2023-11-11 15:17:48] Received voltage: 56.68
+[2023-11-11 15:17:53] Received voltage: 56.69
+[2023-11-11 15:18:03] Received voltage: 56.68
+[2023-11-11 15:18:08] Received voltage: 56.69
+[2023-11-11 15:18:18] Received voltage: 56.7
+[2023-11-11 15:18:23] Received voltage: 56.69
+[2023-11-11 15:18:33] Received voltage: 56.68
+[2023-11-11 15:18:48] Received voltage: 56.69
+[2023-11-11 15:18:53] Received voltage: 56.68
+[2023-11-11 15:19:08] Received voltage: 56.69
+[2023-11-11 15:19:13] Received voltage: 56.69
+[2023-11-11 15:19:33] Received voltage: 56.68
+[2023-11-11 15:19:43] Received voltage: 56.69
+[2023-11-11 15:19:53] Received voltage: 56.69
+[2023-11-11 15:19:58] Received voltage: 56.68
+[2023-11-11 15:20:13] Received voltage: 56.7
+[2023-11-11 15:20:18] Received voltage: 56.69
+[2023-11-11 15:20:23] Received voltage: 56.69
+[2023-11-11 15:20:33] Received voltage: 56.69
+[2023-11-11 15:20:53] Received voltage: 56.69
+[2023-11-11 15:20:58] Received voltage: 56.69
+[2023-11-11 15:21:08] Received voltage: 56.68
+[2023-11-11 15:21:28] Received voltage: 56.68
+[2023-11-11 15:21:33] Received voltage: 56.68
+[2023-11-11 15:21:43] Received voltage: 56.69
+[2023-11-11 15:22:08] Received voltage: 56.69

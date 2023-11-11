@@ -13,13 +13,12 @@ class MQTTClient:
 
         try:
             self.client.connect(broker_address, broker_port, 60)
-        except Exception:
+        except:
             self.error_message = "Failed to connect to MQTT server"
             self.write_to_log(self.error_message)
             self.display_info(self.error_message, success=False)
 
     def write_to_log(self, message):
-        # Get the current date and time
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         with open('data.log', 'a') as log_file:
@@ -27,10 +26,7 @@ class MQTTClient:
             log_file.write(log_entry)
 
     def display_info(self, message, success=True):
-        # Set up fonts
         font = pygame.font.Font(None, 36)
-
-        # Draw the text on the screen
         screen.fill((0, 0, 0))
         text_color = (0, 255, 0) if success else (255, 0, 0)
         text = font.render(message, True, text_color)
@@ -58,11 +54,9 @@ class MQTTClient:
             self.display_temperature(voltage)
 
     def display_temperature(self, voltage):
-        # Set up fonts
         font = pygame.font.Font(None, 36)
         screen.fill((0, 0, 0))
 
-        # Draw the text on the screen
         text = font.render(f'Voltage: {voltage}', True, (255, 255, 255))
         text2 = font.render('Press q to quit', True, (255, 255, 255))
         screen.blit(text, (50, 100))
@@ -70,13 +64,10 @@ class MQTTClient:
         pygame.display.flip()
 
 
-# Initialize pygame and create a window
 pygame.init()
 screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption('Info from MQTT')
-# Create an instance of the MQTTClient class
 mqtt_client = MQTTClient("192.168.0.106", 8883, "owntracks", "zhopa")
-# Main game loop
 running = True
 while running:
     for event in pygame.event.get():
@@ -86,12 +77,6 @@ while running:
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
             running = False
             exit()
-
-    # Continue the Pygame display update
     pygame.display.flip()
-
-    # Continue the MQTT loop
-    mqtt_client.client.loop(1)  # Add a short delay to avoid high CPU usage
-
-# Quit pygame
+    mqtt_client.client.loop(1)
 pygame.quit()
