@@ -32,3 +32,15 @@ Failed to connect to MQTT server
 Connected successfully
 Received voltage: 56.68
 Received voltage: 56.68
+[2023-11-11 14:42:44] Connection failed with result code 5
+[2023-11-11 14:44:10] Connection failed with result code 5
+[2023-11-11 14:44:16] Connection failed with result code 5
+[2023-11-11 14:45:35] Connected successfully
+[2023-11-11 14:45:38] Received voltage: 56.69
+[2023-11-11 14:45:53] Connection failed with result code 5
+[2023-11-11 14:47:16] Connected successfully
+[2023-11-11 14:47:28] Connection failed with result code 5
+[2023-11-11 14:50:11] Connected successfully
+[2023-11-11 14:50:13] Received voltage: 56.69
+[2023-11-11 14:50:24] Failed to connect to MQTT server
+[2023-11-11 14:50:35] Failed to connect to MQTT server

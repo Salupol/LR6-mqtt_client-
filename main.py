@@ -1,6 +1,8 @@
 import paho.mqtt.client as mqtt
 import pygame
 import json
+import getpass
+from datetime import datetime  # Import the datetime module
 
 
 class MQTTClient:
@@ -17,10 +19,13 @@ class MQTTClient:
             self.write_to_log(self.error_message)
             self.display_info(self.error_message, success=False)
 
-
     def write_to_log(self, message):
+        # Get the current date and time
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
         with open('data.log', 'a') as log_file:
-            log_file.write(message + '\n')
+            log_entry = f"[{current_time}] {message}\n"
+            log_file.write(log_entry)
 
     def display_info(self, message, success=True):
         # Set up fonts
@@ -64,14 +69,13 @@ class MQTTClient:
         screen.blit(text2, (500, 700))
         pygame.display.flip()
 
+
 # Initialize pygame and create a window
 pygame.init()
 screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption('Info from MQTT')
-
 # Create an instance of the MQTTClient class
 mqtt_client = MQTTClient("192.168.0.106", 8883, "owntracks", "zhopa")
-
 # Main game loop
 running = True
 while running:
