@@ -8,3 +8,27 @@ Received voltage: 56.68
 Received voltage: 56.69
 Received voltage: 56.68
 Connected with result code 0
+Connected successfully
+Connected successfully
+Connected successfully, waiting for mqtt messages
+Connected successfully
+Connected successfully
+Connected successfully
+Connected successfully
+Received voltage: 56.69
+Failed to connect: [WinError 10061] No connection could be made because the target machine actively refused it
+Failed to connect: [WinError 10061] No connection could be made because the target machine actively refused it
+Failed to connect: [WinError 10061] No connection could be made because the target machine actively refused it
+Failed to connect to MQTT server
+Connected successfully
+Received voltage: 56.69
+Connected successfully
+Received voltage: 56.68
+Connected successfully
+Received voltage: 56.68
+Failed to connect to MQTT server
+Failed to connect to MQTT server
+Failed to connect to MQTT server
+Connected successfully
+Received voltage: 56.68
+Received voltage: 56.68
