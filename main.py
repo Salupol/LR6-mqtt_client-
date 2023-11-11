@@ -35,6 +35,18 @@ class MQTTClient:
         screen.blit(text2, (500, 700))
         pygame.display.flip()
 
+    def display_clock(self, screen):
+        font = pygame.font.Font(None, 48)
+        current_time = datetime.now().strftime("%H:%M:%S")
+        clock_text = font.render(current_time, True, (255, 255, 255), (0, 0, 0, 0))
+        screen_width, screen_height = screen.get_size()
+        center_x = screen_width // 2 - clock_text.get_width() // 2
+        center_y = screen_height // 2 - clock_text.get_height() // 2
+        transparent_surface = pygame.Surface((screen_width, screen_height), pygame.SRCALPHA)
+        transparent_surface.blit(clock_text, (center_x, center_y))
+        screen.blit(transparent_surface, (0, 0))
+        pygame.display.flip()
+
     def on_connect(self, client, userdata, flags, rc):
         if rc == 0:
             self.write_to_log("Connected successfully, waiting for messages")
@@ -78,5 +90,6 @@ while running:
             running = False
             exit()
     pygame.display.flip()
+    mqtt_client.display_clock(screen)
     mqtt_client.client.loop(1)
 pygame.quit()
