@@ -17,7 +17,26 @@ class MQTTClient:
             self.error_message = "Failed to connect to MQTT server"
             self.write_to_log(self.error_message)
             self.display_info(self.error_message, success=False)
-
+    def on_connect(self, client, userdata, flags, rc):
+        if rc == 0:
+            self.write_to_log("Connected successfully, waiting for messages")
+            self.display_info("Connected successfully, waiting for messages")
+            self.client.subscribe("tele/main_battery/SENSOR")
+            self.client.subscribe("zigbee2mqtt/ths_bear")
+        else:
+            error_message = f"Connection failed with result code {rc}"
+            self.write_to_log(error_message)
+            self.display_info(error_message, success=False)
+    def on_message(self, client, userdata, msg):
+        data = json.loads(msg.payload)
+        voltage = data.get('voltage')
+        temperature = data.get('temperature')
+        if voltage is not None:
+            self.write_to_log(f"Received voltage: {voltage}")
+            self.display_voltage(voltage)
+        if temperature is not None:
+            self.write_to_log(f"Received temperature: {temperature}")
+            self.display_temperature(temperature)
     def write_to_log(self, message):
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -47,35 +66,38 @@ class MQTTClient:
         screen.blit(transparent_surface, (0, 0))
         pygame.display.flip()
 
-    def on_connect(self, client, userdata, flags, rc):
-        if rc == 0:
-            self.write_to_log("Connected successfully, waiting for messages")
-            self.display_info("Connected successfully, waiting for messages")
-            self.client.subscribe("tele/main_battery/SENSOR")
-        else:
-            error_message = f"Connection failed with result code {rc}"
-            self.write_to_log(error_message)
-            self.display_info(error_message, success=False)
-
-    def on_message(self, client, userdata, msg):
-        data = json.loads(msg.payload)
-        voltage = data.get('voltage')
-
-        if voltage is not None:
-            self.write_to_log(f"Received voltage: {voltage}")
-            self.display_temperature(voltage)
-
-    def display_temperature(self, voltage):
+    def display_voltage(self, voltage):
         font = pygame.font.Font(None, 36)
         screen.fill((0, 0, 0))
 
-        text = font.render(f'Voltage: {voltage}', True, (255, 255, 255))
-        text2 = font.render('Press q to quit', True, (255, 255, 255))
-        screen.blit(text, (50, 100))
-        screen.blit(text2, (500, 700))
+        text = font.render(f'Voltage: {voltage}', True, (255, 255, 255), (0, 0, 0, 0))
+        # text2 = font.render('Press q to quit', True, (255, 255, 255))
+        # screen.blit(text, (50, 100))
+        # screen.blit(text2, (500, 700))
+        # pygame.display.flip()
+        transparent_surface = pygame.Surface((800, 800), pygame.SRCALPHA)
+        transparent_surface.blit(text, (0, 0))
+        # transparent_surface2 = pygame.Surface((800, 800), pygame.SRCALPHA)
+        # transparent_surface2.blit(text2, (500, 700))
+        screen.blit(transparent_surface, (0, 0))
+        # screen.blit(transparent_surface2, (0, 0))
         pygame.display.flip()
+    def display_temperature(self, temperature):
+        font = pygame.font.Font(None, 36)
+        screen.fill((0, 0, 0))
 
-
+        text = font.render(f'Temperature: {temperature}', True, (255, 255, 255), (0, 0, 0, 0))
+        # text2 = font.render('Press q to quit', True, (255, 255, 255))
+        # screen.blit(text, (50, 100))
+        # screen.blit(text2, (500, 700))
+        # pygame.display.flip()
+        transparent_surface = pygame.Surface((2v00, 200), pygame.SRCALPHA)
+        transparent_surface.blit(text, (0, 0))
+        # transparent_surface2 = pygame.Surface((800, 800), pygame.SRCALPHA)
+        # transparent_surface2.blit(text2, (500, 700))
+        screen.blit(transparent_surface, (300, 0))
+        # screen.blit(transparent_surface2, (0, 0))
+        pygame.display.flip()
 pygame.init()
 screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption('Info from MQTT')
